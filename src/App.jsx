@@ -252,50 +252,40 @@ function App() {
 
   return (
     <div className="flex flex-col justify-center items-center h-screen w-screen">
-      <h1 className="text-6xl tracking-wide mb-12">Sorting Algorithms Visualizer</h1>
+      <h1 className="text-8xl text-center tracking-wide text-white bg-orange-400 p-12 mb-12">Sorting Algorithms Visualizer</h1>
       <div className="flex gap-6 m-2">
         <button
           onClick={() => setAlgorithm("bubble")}
           disabled={isSorting}
-          className={`px-4 py-2 border-2 rounded ${
-            algorithm === "bubble" ? "bg-black text-white border-black" : "bg-white text-black border-black hover:bg-black hover:text-white"
-          } transition-all duration-200`}
+          className={`button ${algorithm === "bubble" ? "active" : ""} ${isSorting ? "disabled" : ""}`}
         >
           Bubble Sort
         </button>
         <button
             onClick={() => setAlgorithm("merge")}
             disabled={isSorting}
-            className={`px-4 py-2 border-2 rounded ${
-              algorithm === "merge" ? "bg-black text-white border-black" : "bg-white text-black border-black hover:bg-black hover:text-white"
-            } transition-all duration-200`}
+            className={`button ${algorithm === "merge" ? "active" : ""} ${isSorting ? "disabled" : ""}`}
           >
             Merge Sort
         </button>
         <button
             onClick={() => setAlgorithm("quick")}
             disabled={isSorting}
-            className={`px-4 py-2 border-2 rounded ${
-              algorithm === "quick" ? "bg-black text-white border-black" : "bg-white text-black border-black hover:bg-black hover:text-white"
-            } transition-all duration-200`}
+            className={`button ${algorithm === "quick" ? "active" : ""} ${isSorting ? "disabled" : ""}`}
           >
             Quick Sort
         </button>   
         <button
             onClick={() => setAlgorithm("insertion")}
             disabled={isSorting}
-            className={`px-4 py-2 border-2 rounded ${
-              algorithm === "insertion" ? "bg-black text-white border-black" : "bg-white text-black border-black hover:bg-black hover:text-white"
-            } transition-all duration-200`}
+            className={`button ${algorithm === "insertion" ? "active" : ""} ${isSorting ? "disabled" : ""}`}
           >
             Insertion Sort
         </button>
         <button
             onClick={() => setAlgorithm("selection")}
             disabled={isSorting}
-            className={`px-4 py-2 border-2 rounded ${
-              algorithm === "selection" ? "bg-black text-white border-black" : "bg-white text-black border-black hover:bg-black hover:text-white"
-            } transition-all duration-200`}
+            className={`button ${algorithm === "selection" ? "active" : ""} ${isSorting ? "disabled" : ""}`}
           >
             Selection Sort
         </button>
@@ -326,18 +316,14 @@ function App() {
         <button
           onClick={generateArray}
           disabled={isSorting}
-          className={`px-4 py-2 border-2 border-black rounded ${
-            isSorting ? "cursor-not-allowed" : "bg-white hover:bg-black hover:text-white"
-          } transition-all duration-200`}
+          className={`controlButton ${isSorting ? "disabled" : ""}`}
         >
           New Array
         </button>
         <button
           onClick={startSort}
           disabled={isSorting}
-          className={`px-4 py-2 border-2 border-black rounded ${
-            isSorting ? "cursor-not-allowed" : "bg-white hover:bg-black hover:text-white"
-          } transition-all duration-200`}
+          className={`controlButton ${isSorting ? "disabled" : ""}`}
         >
           Sort Array
         </button>

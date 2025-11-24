@@ -1,6 +1,6 @@
 ### Sorting Algorithm Visualizer
 
-This web app lets you see how different sorting algorithms work through interactive visualizations. It supports a variety of sorting algorithms, including Bubble Sort, Merge Sort, Quick Sort, Insertion Sort, and Selection Sort.
+See how sorting algorithms work in action [here](https://samanthacabrera.github.io/array-sorting-visualizer/).
 
 ### Installation
 
@@ -17,7 +17,7 @@ The app will be available at http://localhost:5173.
 
 ### Understanding the Algorithms
 
-Sorting algorithms are ways to arrange data in a specific order—usually ascending or descending. Each algorithm works differently and has its own strengths and weaknesses. This project includes five popular algorithms:
+Sorting algorithms are ways to arrange data in a specific order. Each algorithm works differently and has its own strengths and weaknesses. This project includes five popular algorithms:
 
 </br>
 

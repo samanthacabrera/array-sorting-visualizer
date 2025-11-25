@@ -10,8 +10,8 @@ function App() {
   const [animationSpeed, setAnimationSpeed] = useState(100);
 
   const colors = {
-    compare: "#00BFFF", // blue
-    sorted: "#8AE234",  // green
+    compare: "#219EBC", 
+    sorted: "#FFB703",  
   };
 
   const generateArray = () => {
@@ -25,21 +25,18 @@ function App() {
     setSortedIndices([]); // reset sorted indices
   };
 
-  // gen array on mount
   useEffect(() => {
     generateArray();
   }, []);
 
-  // pause for animation
   const sleep = (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
   };
 
-  // get bar color based on state
   const getBarColor = (index) => {
     if (currentIndices.includes(index)) return colors.compare;
     if (sortedIndices.includes(index)) return colors.sorted;
-    return "#CCCCCC"; // default for unsorted
+    return "#CCCCCC"; 
   };
 
   // BUBBLE SORT 
@@ -251,9 +248,12 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen w-screen">
-      <h1 className="text-8xl text-center tracking-wide text-white bg-orange-400 p-12 mb-12">Sorting Algorithms Visualizer</h1>
-      <div className="flex gap-6 m-2">
+    <div className="flex flex-col justify-center items-center min-h-screen w-full">
+      <h1 className="text-2xl md:text-5xl text-center text-[#219EBC] bg-[#219EBC]/20 font-medium tracking-tight leading-[1.1] w-fit rounded-full mb-8 py-4 px-12 md:px-24">
+        Sorting<br/>Algorithms<br/>Visualizer
+      </h1>
+
+      <div className="flex flex-wrap justify-center gap-3 md:gap-6 m-2">
         <button
           onClick={() => setAlgorithm("bubble")}
           disabled={isSorting}
@@ -291,12 +291,12 @@ function App() {
         </button>
       </div>
 
-      <div className="flex items-end h-64 w-full justify-center">
+      <div className="flex items-end h-64 w-full max-w-full px-2 justify-center">
         {array.map((value, index) => (
           <div
             key={index}
-            className="mx-px w-4 transition-all duration-100"
-            style={{ 
+              className="mx-[0.5px] w-[10px] md:w-4 transition-all duration-100"
+              style={{ 
               height: `${value * 2}px`,
               backgroundColor: getBarColor(index)
             }}
@@ -329,7 +329,7 @@ function App() {
         </button>
       </div>
 
-      <div className="absolute top-1/2 left-12 flex flex-col items-center">
+      <div className="absolute top-1/2 left-0 md:left-12 flex flex-col items-center">
         <div className="relative w-2 h-64 my-4">
           <input
             type="range"
@@ -339,16 +339,17 @@ function App() {
             onChange={(e) => setAnimationSpeed(Number(e.target.value))}
             className="absolute inset-0 w-full h-full bg-gray-200 rounded-lg appearance-none cursor-pointer"
             style={{
-              writingMode: "vertical-rl", // makes slider vertical 
+              writingMode: "vertical-rl",  
               transform: "rotate(180deg)",
               transformOrigin: "center", 
+              accentColor: "#FFB703",
             }}
             disabled={isSorting}
           />
         </div>
 
-        <div className="text-sm opacity-50 w-[100px]">
-          Speed: {animationSpeed} ms
+        <div className="text-sm text-center opacity-50 w-[100px]">
+          {animationSpeed} ms
         </div>
       </div>
 

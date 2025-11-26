@@ -8,6 +8,21 @@ function App() {
   const [algorithm, setAlgorithm] = useState("bubble"); 
   const [explanation, setExplanation] = useState(""); 
   const [animationSpeed, setAnimationSpeed] = useState(100);
+  const [darkMode, setDarkMode] = useState(() => {
+    const saved = localStorage.getItem("theme");
+    return saved ? saved === "dark" : true;  
+  });
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
+
 
   const colors = {
     compare: "#219EBC", 
@@ -248,12 +263,19 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen w-full">
-      <h1 className="text-2xl md:text-5xl text-center text-[#219EBC] bg-[#219EBC]/20 font-medium tracking-tight leading-[1.1] w-fit rounded-full mb-8 py-4 px-12 md:px-24">
-        Sorting<br/>Algorithms<br/>Visualizer
+    <div className="flex flex-col items-center min-h-screen w-full">
+      <h1 className="absolute top-28 md:top-4 text-2xl md:text-4xl text-center w-fit">
+        Sorting Algorithms Visualizer
       </h1>
 
-      <div className="flex flex-wrap justify-center gap-3 md:gap-6 m-2">
+      <button
+        onClick={() => setDarkMode(!darkMode)}
+        className="controlButton absolute top-4 left-4 flex items-center justify-center rounded-full"
+      >
+        {darkMode ? "𖤓" : "☾"}
+      </button>
+
+      <div className="flex flex-wrap justify-center gap-3 md:gap-6 mt-[25vh]">
         <button
           onClick={() => setAlgorithm("bubble")}
           disabled={isSorting}
@@ -291,7 +313,7 @@ function App() {
         </button>
       </div>
 
-      <div className="flex items-end h-64 w-full max-w-full px-2 justify-center">
+      <div className="flex items-end h-64 w-full max-w-fit px-2 justify-center">
         {array.map((value, index) => (
           <div
             key={index}
@@ -304,7 +326,7 @@ function App() {
         ))}
       </div>
       
-      <div className="mt-12 max-w-4xl">
+      <div className="mt-12 text-center max-w-4xl">
         {isSorting ? (
           <p>{explanation}</p>
         ) : (
@@ -329,7 +351,7 @@ function App() {
         </button>
       </div>
 
-      <div className="absolute top-1/2 left-0 md:left-12 flex flex-col items-center">
+      <div className="hidden md:block absolute top-1/4 left-12 flex flex-col items-center">
         <div className="relative w-2 h-64 my-4">
           <input
             type="range"
@@ -342,16 +364,18 @@ function App() {
               writingMode: "vertical-rl",  
               transform: "rotate(180deg)",
               transformOrigin: "center", 
-              accentColor: "#FFB703",
+              accentColor: "#219EBC",
             }}
             disabled={isSorting}
           />
         </div>
 
-        <div className="text-sm text-center opacity-50 w-[100px]">
+        <div className="text-sm -translate-x-4 opacity-50">
           {animationSpeed} ms
         </div>
       </div>
+
+      <p className="fixed bottom-2 text-xs">Made by <a href="https://samoontha.com/" target="_blank" rel="noopener noreferrer" className="hover:italic">Sam Cabrera</a></p>
 
     </div>
   );

@@ -263,8 +263,8 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col items-center min-h-screen w-full">
-      <h1 className="absolute top-28 md:top-4 text-2xl md:text-4xl text-center w-fit">
+    <div className="flex flex-col items-center min-h-screen w-full px-2 md:px-0">
+      <h1 className="absolute top-6 md:top-4 text-md md:text-4xl ml-4 md:ml-0 w-fit">
         Sorting Algorithms Visualizer
       </h1>
 
@@ -275,7 +275,7 @@ function App() {
         {darkMode ? "𖤓" : "☾"}
       </button>
 
-      <div className="flex flex-wrap justify-center gap-3 md:gap-6 mt-[25vh]">
+      <div className="flex flex-wrap justify-center gap-3 md:gap-6 mt-[16vh] md:mt-[25vh]">
         <button
           onClick={() => setAlgorithm("bubble")}
           disabled={isSorting}
@@ -326,7 +326,7 @@ function App() {
         ))}
       </div>
       
-      <div className="mt-12 text-center max-w-4xl">
+      <div className="mt-12 text-center text-sm md:text-lg max-w-4xl">
         {isSorting ? (
           <p>{explanation}</p>
         ) : (
@@ -375,7 +375,7 @@ function App() {
         </div>
       </div>
 
-      <p className="fixed bottom-2 text-xs">Made by <a href="https://samoontha.com/" target="_blank" rel="noopener noreferrer" className="hover:italic">Sam Cabrera</a></p>
+      <p className="absolute bottom-2 text-xs tracking-wide">Made by <a href="https://samoontha.com/" target="_blank" rel="noopener noreferrer" className="hover:italic">Sam Cabrera</a></p>
 
     </div>
   );
